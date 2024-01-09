@@ -1,4 +1,5 @@
-public class Dragon {
+public class
+Dragon {
     private int level;
     private int dragonHealth;
     private Player player;

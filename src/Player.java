@@ -1,7 +1,6 @@
 public class Player {
     private int health;
     private int gold;
-    private boolean potStatus;
     private String name;
     private Sword sword;
     private Dragon dragon;
@@ -10,6 +9,16 @@ public class Player {
         this.name = name;
         health = 100;
 
+    }
+    public String getName() {
+        return name;
+    }
+    public void heal() {
+        health += 50;
+        System.out.println("You healed 50 health!");
+        if (health > 100) {
+            health = 100;
+        }
     }
     public int getNewHealth() {
         return  newHealth;
