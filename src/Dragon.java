@@ -24,4 +24,7 @@ Dragon {
             return 0;
         }
     }
+    public void takeDmg(int x) {
+        dragonHealth = x;
+    }
 }

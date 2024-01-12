@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Room {
     private String roomName;
-    private int dragons;
+    private int dragonAmount;
     private boolean cleared;
     private boolean hasHealthPot;
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -9,13 +9,12 @@ public class Room {
     private Dragon dragon;
     public Room() {
         int rand = (int) (Math.random() * 4);
-        dragons = rand;
+        player = null;
+        dragon = null;
+        dragonAmount = rand;
         hasHealthPot = false;
         cleared = false;
         roomName = "Dragon Den";
-    }
-    public int getDragons() {
-        return dragons;
     }
     public boolean getHasHealthPot() {
         return hasHealthPot;
@@ -25,12 +24,8 @@ public class Room {
         return hasHealthPot;
     }
     public void dragonRoom() {
-        dragon = new Dragon();
-        player = new Player(player.getName());
         System.out.println(roomName);
-        System.out.println("There are " + getDragons() + " dragons and they are level " + dragon.getLevel());
-        dragon.dragonAttack();
-        player.attack();
+        System.out.println("There are " + dragonAmount + " dragons and they are level " + dragon.getLevel());
 
     }
     public void healthPot() {

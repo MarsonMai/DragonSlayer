@@ -3,11 +3,12 @@ public class Player {
     private int gold;
     private String name;
     private Sword sword;
-    private Dragon dragon;
     private int newHealth;
-    public Player(String name) {
+    public Player(String name,Sword sword) {
         this.name = name;
         health = 100;
+        gold = 0;
+        this.sword = sword;
 
     }
     public String getName() {
@@ -23,17 +24,12 @@ public class Player {
     public int getNewHealth() {
         return  newHealth;
     }
-    public void attack() {
+    public void attack(Dragon dragon) {
+        int dragonDmg = dragon.dragonAttack();
+        health -= dragonDmg;
         System.out.println(name + " did " + sword.swordAttack() + "dmg!");
         newHealth = dragon.getDragonHealth() - sword.swordAttack();
+        dragon.takeDmg(newHealth);
     }
-    public void getAttacked() {
-        if (health - dragon.dragonAttack() > 0) {
-            health =- dragon.dragonAttack();
-            System.out.println("The dragon did " + dragon.dragonAttack() + "and you have " + health + " hp remaining!");
-        } else {
-            System.out.println(name + "died!");
-            health = 0;
-        }
-    }
+
 }
