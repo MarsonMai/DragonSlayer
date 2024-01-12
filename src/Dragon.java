@@ -18,6 +18,7 @@ Dragon {
         int rand = (int) (Math.random() * 101);
         int randAttack = (int) (Math.random() * 11) + 1;
         if (rand > 20) {
+            System.out.println("Dragon did " + level * randAttack + " dmg!");
             return level * randAttack;
         } else {
             System.out.println(player + " dodged your attack!");
