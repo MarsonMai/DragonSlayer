@@ -43,10 +43,8 @@ DragonSlayer {
                 } else if (choice2.equals("1")) {
                     //player.attack(room.getCurrentDragon());
                 }
-            } else if (choice.equals("v")) {
-
-            } else if (choice.equals("q")) {
-                System.out.println("Goodbye!");
+            } else if (choice.equals("3")) {
+                player.stats();
             }
 
         }

@@ -26,6 +26,7 @@ public class Room {
     public void dragonRoom() {
         System.out.println(roomName);
         System.out.println("There are " + dragonAmount + " dragons and they are level " + dragon.getLevel());
+        
 
     }
     public void healthPot() {
