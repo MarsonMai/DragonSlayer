@@ -1,28 +1,21 @@
 public class Sword {
-    private int attack;
-    private int dodge;
-    public Sword(int attack,int dodge) {
-        this.dodge = dodge;
-        this.attack = attack;
+    private int swordAttack;
+    private int dodgeRating;
+    public Sword() {
+        swordAttack = 10;
+        dodgeRating = 20;
+    }
 
+    public int getSwordAttack() {
+        return swordAttack;
     }
-    public int swordAttack() {
-        int rand = (int) (Math.random() * 100) + 1;
-        if (rand > dodge) {
-            return attack;
-        } else {
-            System.out.println("The dragon dodged your attack!");
-            return 0;
-        }
+
+    public int getDodgeRating() {
+        return dodgeRating;
     }
-    public void upgrade() {
-        int rand = (int) (Math.random() * 3) + 1;
-        if (rand == 1) {
-            System.out.println("Sword has gained a attack boost!");
-            attack += 10;
-        } else {
-            System.out.println("Sword attack cannot miss!");
-            dodge = -1;
-        }
+
+    public void swordUpgrade() {
+        swordAttack += 4;
+        dodgeRating += 4;
     }
 }

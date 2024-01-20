@@ -1,31 +1,43 @@
-public class
-Dragon {
-    private int level;
+public class Dragon {
     private int dragonHealth;
-    private Player player;
-    public Dragon() {
-        int rand = (int) (Math.random() * 4);
+    private int dragonLevel;
+    private static Player player;
+    public Dragon(Player player) {
+        dragonLevel = (int) (Math.random() * 3) + 1; //gives dragon random level
         dragonHealth = 100;
-        level = rand;
+        this.player = player;
     }
+
     public int getLevel() {
-        return level;
+        return dragonLevel;
     }
+
     public int getDragonHealth() {
         return dragonHealth;
     }
-    public int dragonAttack() {
-        int rand = (int) (Math.random() * 101);
-        int randAttack = (int) (Math.random() * 11) + 1;
-        if (rand > 20) {
-            System.out.println("Dragon did " + level * randAttack + " dmg!");
-            return level * randAttack;
-        } else {
-            System.out.println(player + " dodged your attack!");
-            return 0;
-        }
+
+    public void setDragonHealth(int dragonHealth) {
+        this.dragonHealth = dragonHealth;
     }
-    public void takeDmg(int x) {
-        dragonHealth = x;
+
+    public int dragonAttack() {
+        return dragonLevel * ((int)(Math.random() * 5) + 2);
+    }
+
+    public void deadDragon() {
+        int randomNum = (int) (Math.random() * 4) + 1;
+        int goldAmount = (int) (Math.random() * 51) + 25;
+        if (randomNum == 1) {
+            player.setPlayerGold(player.getPlayerGold() + goldAmount);
+            System.out.println("You killed a dragon and got " + goldAmount + " gold");
+        } else if (randomNum == 2) {
+            player.getSword().swordUpgrade();
+            System.out.println("You killed a dragon and got a sword upgrade and upgraded your sword");
+        } else if (randomNum == 3) {
+            player.useHealthPot();
+            System.out.println("You killed a dragon and got a health bonus and your new health is " + player.getPlayerHealth());
+        } else {
+            System.out.println("You killed a dragon and got nothing");
+        }
     }
 }
