@@ -1,15 +1,15 @@
 public class Player {
     private String playerName;
-    private int Health;
-    private int Gold;
+    private int health;
+    private int gold;
     private static int topScore = 0;
-    private int Score;
+    private int score;
     private boolean hasHealthPotion;
     private Sword sword;
     public Player(String playerName) {
         this.playerName = playerName;
-        Health = 100;
-        Gold = 0;
+        health = 100;
+        gold = 0;
         hasHealthPotion = false;
         sword = new Sword();
     }
@@ -18,12 +18,12 @@ public class Player {
         return hasHealthPotion;
     }
 
-    public int getPlayerScore() {
-        return Score;
+    public int getScore() {
+        return score;
     }
 
-    public int getPlayerGold() {
-        return Gold;
+    public int getGold() {
+        return gold;
     }
 
     public int getTopScore() {
@@ -34,21 +34,15 @@ public class Player {
         return sword;
     }
 
-    public String SwordInfo() {
+    public String swordInfo() {
         return playerName + " has a attack rating of " + sword.getSwordAttack() + " and a dodge rating of " + sword.getDodgeRating();
-    }
-    public void stats() {
-        System.out.println("Health: " + Health);
-        System.out.println("Sword info: " + SwordInfo());
-        System.out.println("PlayerGold: " + Gold);
-        System.out.println("Health Pot:" + hasHealthPotion);
     }
 
     public int getHealth() {
-        return Health;
+        return health;
     }
     public void lowerGold(int gold) {
-        Gold -= gold;
+        gold -= gold;
     }
 
     public void setHasHealthPotion(boolean HealthPotion) {
@@ -56,25 +50,31 @@ public class Player {
     }
 
     public void setGold(int playerGold) {
-        Gold += playerGold;
+        gold += playerGold;
     }
 
     public void setHealth(int playerHealth) {
-        Health = playerHealth;
+        health = playerHealth;
     }
 
     public int attack() {
         return sword.getSwordAttack() * ((int)(Math.random() * 3) + 2);
     }
 
-    public void TakeDamage(int damage) {
+    public void takeDamage(int damage) {
         int num = (int) (Math.random() * 100) + 1;
         if (num > sword.getDodgeRating()) {
-            Health -= damage;
+            health -= damage;
             System.out.println(playerName + " took " + damage + " damage");
         } else {
             System.out.println("You dodged the dragon's attack");
         }
+    }
+    public void stats() {
+        System.out.println("Health: " + health);
+        System.out.println("Sword info: " + swordInfo());
+        System.out.println("PlayerGold: " + gold);
+        System.out.println("Health Pot:" + hasHealthPotion);
     }
 
     public void useHealthPot() {
@@ -87,13 +87,13 @@ public class Player {
     }
     public void Score(boolean roomsCleared) {
         if(!roomsCleared) {
-            Score = Gold + Health;
+            score = gold + health;
         } else {
-            Score = Gold + Health + 100;
+            score = gold + health + 100;
         }
 
-        if (Score > topScore) {
-            topScore = Score;
+        if (score > topScore) {
+            topScore = score;
         }
     }
 

@@ -5,19 +5,18 @@ public class Room {
     private int roomNumber;
     private String[] searchedRooms;
     private String roomName;
-    private boolean roomsCleared;
+    private boolean cleared;
     private Scanner myScanner;
     public Room(Player player) {
-        roomsCleared = false;
         myScanner = new Scanner(System.in);
         roomNumber = 0;
         this.player = player;
-        roomsCleared = false;
+        cleared = false;
         searchedRooms = new String[5];
     }
 
     public void enterRoom() {
-        while (!roomsCleared) {
+        while (!cleared) {
             roomNumber++;
             roomName = room[0];
             String[] newList = new String[room.length - 1];
@@ -50,7 +49,7 @@ public class Room {
                         if (dragon.getDragonHealth() <= 0) {
                             dragon.deadDragon();
                         } else {
-                            player.TakeDamage(dragon.dragonAttack());
+                            player.takeDamage(dragon.dragonAttack());
                             System.out.println("health:" + player.getHealth());
                             System.out.println("Dragon hp: " + dragon.getDragonHealth());
                             System.out.println("---------------------------");
@@ -73,41 +72,41 @@ public class Room {
                         System.out.println("(L)eave the shop");
                         System.out.print("Enter choice: ");
                         String str = myScanner.nextLine().toLowerCase();
-                        if (str.equals("s") && player.getPlayerGold() >= 100) { // checks if the player has enough gold to purchase
+                        if (str.equals("s") && player.getGold() >= 100) { // checks if the player has enough gold to purchase
                             player.getSword().swordUpgrade();
                             player.lowerGold(100);
-                        } else if (str.equals("m") && player.getPlayerGold() >= 100) {
+                        } else if (str.equals("m") && player.getGold() >= 100) {
                             player.setHealth(player.getHealth() + 50);
                             player.lowerGold(100);
                         } else {
-                            System.out.println("Not a choice!");
+                            System.out.println("Invalid!");
                         }
                     } else {
-                        System.out.println("not an option!");
+                        System.out.println("Invalid!");
                     }
                 }
                 if (room.length == 0) {
-                    roomsCleared = true;
+                    cleared = true;
                 }
             }
         }
         if (room.length == 0) {
             System.out.println("You Win!");
         }
-        player.Score(roomsCleared);
-        System.out.println("Your score is " + player.getPlayerScore());
+        player.Score(cleared);
+        System.out.println("Your score is " + player.getScore());
     }
 
     public void search() {
-        boolean isSearched = false;
+        boolean searched = false;
         for (int i = 0; i < searchedRooms.length; i++) { //list of rooms that are searched
             if (searchedRooms[i] != null) {
                 if (roomName.equals(searchedRooms[i])) {
-                    isSearched = true;
+                    searched = true;
                 }
             }
         }
-        if (!isSearched) {
+        if (!searched) {
             int randNum = (int) (Math.random() * 2) + 1;
             if (randNum == 1) {
                 System.out.println("You searched the room and found a health pot!");

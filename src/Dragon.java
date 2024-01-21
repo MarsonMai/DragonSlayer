@@ -28,7 +28,7 @@ public class Dragon {
         int randomNum = (int) (Math.random() * 4) + 1;
         int goldAmount = (int) (Math.random() * 51) + 25;
         if (randomNum == 1) {
-            player.setGold(player.getPlayerGold() + goldAmount);
+            player.setGold(player.getGold() + goldAmount);
             System.out.println("You killed a dragon and got " + goldAmount + " gold");
         } else if (randomNum == 2) {
             player.getSword().swordUpgrade();
