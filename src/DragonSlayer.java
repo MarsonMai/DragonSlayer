@@ -16,7 +16,7 @@ public class DragonSlayer {
             System.out.println("----------------------");
             System.out.println("Main Menu");
             System.out.println("1.New game 2.Quit 3.View top score");
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
             String number = myScanner.nextLine();
             System.out.println("----------------------");
             if(number.equals("1")) {
